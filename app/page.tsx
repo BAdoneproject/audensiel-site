@@ -117,7 +117,7 @@ export default function Home() {
               </div>
               <div>
                 <h1 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  Workshop
+                  Workshop Audensiel
                 </h1>
                 <p className="text-sm text-gray-500">Comprendre le développement web</p>
               </div>
@@ -295,41 +295,14 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Feature Cards */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">
-            Technologies et Concepts
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {mainFeatures.map((feature) => (
-              <a
-                key={feature.path}
-                href={feature.path}
-                className="block p-6 bg-white rounded-xl shadow-[inset_0_2px_4px_0_rgba(0,0,0,0.1)] hover:shadow-xl transition-all duration-300"
-              >
-                <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
-                <p className="text-gray-600 mb-4">{feature.description}</p>
-                <ul className="text-sm text-gray-500">
-                  {feature.details.map((detail, index) => (
-                    <li key={index} className="mb-1">• {detail}</li>
-                  ))}
-                </ul>
-              </a>
-            ))}
-          </div>
-        </section>
       </main>
 
       {/* Footer */}
       <footer className="bg-gray-800 text-white py-8">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p>© {new Date().getFullYear()} Formation Développement Web</p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
-              <a href="#" className="hover:text-gray-300 transition-colors">Documentation</a>
-              <a href="#" className="hover:text-gray-300 transition-colors">GitHub</a>
-              <a href="#" className="hover:text-gray-300 transition-colors">Contact</a>
-            </div>
+            <p>© {new Date().getFullYear()} Bertrand Avocat - Audensiel</p>
+           
           </div>
         </div>
       </footer>
