@@ -1,59 +1,70 @@
+'use client';
+
+import Link from 'next/link';
+import { useState } from 'react';
+
 export default function Home() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   const timelineSteps = [
     { 
       number: 1, 
       title: "Introduction", 
       path: "/introduction",
-      description: "Objectifs et présentation du projet"
+      description: "Vue d'ensemble du développement web moderne",
+      icon: "🎯"
     },
     { 
       number: 2, 
       title: "React & Next.js", 
       path: "/react-nextjs",
-      description: "Pourquoi ces technologies ?"
+      description: "Framework et outils de développement",
+      icon: "⚛️"
     },
     { 
       number: 3, 
       title: "Création du Projet", 
       path: "/creation",
-      description: "Structure et initialisation"
+      description: "Initialisation et structure",
+      icon: "🏗️"
     },
     { 
       number: 4, 
-      title: "Git & Branches", 
+      title: "Git", 
       path: "/git",
-      description: "Travail collaboratif et versioning"
+      description: "Gestion de versions et collaboration",
+      icon: "🌳"
     },
     { 
       number: 5, 
       title: "Base de données", 
       path: "/database",
-      description: "SQL vs NoSQL"
+      description: "Stockage et gestion des données",
+      icon: "💾"
     },
     { 
       number: 6, 
-      title: "API & Connexion", 
-      path: "/api",
-      description: "Intégration des services"
-    },
-    { 
-      number: 7, 
       title: "Déploiement", 
       path: "/deployment",
-      description: "Pré-prod et Production"
-    },
-    { 
-      number: 8, 
-      title: "CI/CD", 
-      path: "/cicd",
-      description: "Automatisation et intégration continue"
+      description: "Mise en ligne de l'application",
+      icon: "🚀"
     }
   ];
 
   const mainFeatures = [
     {
+      title: "Introduction",
+      description: "Les fondamentaux du développement web moderne",
+      details: [
+        "Vue d'ensemble",
+        "Bonnes pratiques",
+        "Écosystème moderne"
+      ],
+      path: "/introduction"
+    },
+    {
       title: "React & Next.js",
-      description: "Interface dynamique et réactive avec rendu côté serveur",
+      description: "Framework et outils de développement",
       details: [
         "Composants réutilisables",
         "Routage automatique",
@@ -82,16 +93,6 @@ export default function Home() {
       path: "/database"
     },
     {
-      title: "API & Intégration",
-      description: "Communication et services externes",
-      details: [
-        "Requêtes HTTP",
-        "REST API",
-        "Gestion des données"
-      ],
-      path: "/api"
-    },
-    {
       title: "Déploiement",
       description: "De la pré-production à la mise en ligne",
       details: [
@@ -100,35 +101,85 @@ export default function Home() {
         "Optimisation"
       ],
       path: "/deployment"
-    },
-    {
-      title: "CI/CD",
-      description: "Automatisation et qualité de code",
-      details: [
-        "Tests automatisés",
-        "Déploiement continu",
-        "GitHub Actions"
-      ],
-      path: "/cicd"
     }
   ];
 
   return (
     <div className="min-h-screen bg-gray-100">
       {/* Header */}
-      <header className="sticky top-0 bg-white shadow-lg z-50">
+      <header className="sticky top-0 bg-white/80 backdrop-blur-md z-50">
         <nav className="container mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
-            <div className="text-2xl font-bold text-gray-800">Formation Dev Web</div>
-            <div className="hidden lg:flex space-x-6">
+            {/* Logo et Titre */}
+            <Link href="/" className="flex items-center gap-3 group">
+              <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-2 rounded-lg transform group-hover:rotate-12 transition-transform">
+                <span className="text-2xl">🚀</span>
+              </div>
+              <div>
+                <h1 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                  Workshop
+                </h1>
+                <p className="text-sm text-gray-500">Comprendre le développement web</p>
+              </div>
+            </Link>
+
+            {/* Navigation Desktop */}
+            <div className="hidden lg:flex items-center gap-2">
               {timelineSteps.map((step) => (
-                <a
+                <Link
                   key={step.path}
                   href={step.path}
-                  className="text-gray-600 hover:text-gray-900 transition-colors"
+                  className="relative px-4 py-2 rounded-lg group hover:bg-gray-50 transition-all"
                 >
-                  {step.title}
-                </a>
+                  <span className="flex items-center gap-2">
+                    <span className="text-xl transform group-hover:scale-110 transition-transform">
+                      {step.icon}
+                    </span>
+                    <span className="text-gray-700">{step.title}</span>
+                  </span>
+                  <div className="absolute inset-x-0 h-0.5 bottom-0 bg-gradient-to-r from-blue-600 to-purple-600 scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+                </Link>
+              ))}
+            </div>
+
+            {/* Menu Mobile */}
+            <div className="lg:hidden">
+              <button 
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
+              >
+                <div className="w-6 h-5 relative flex flex-col justify-between">
+                  <span className={`w-full h-0.5 bg-gray-600 transform transition-transform ${
+                    mobileMenuOpen ? 'rotate-45 translate-y-2' : ''
+                  }`} />
+                  <span className={`w-full h-0.5 bg-gray-600 transition-opacity ${
+                    mobileMenuOpen ? 'opacity-0' : ''
+                  }`} />
+                  <span className={`w-full h-0.5 bg-gray-600 transform transition-transform ${
+                    mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''
+                  }`} />
+                </div>
+              </button>
+            </div>
+          </div>
+
+          {/* Menu Mobile Déroulant */}
+          <div className={`lg:hidden overflow-hidden transition-all duration-300 ${
+            mobileMenuOpen ? 'max-h-96 mt-4' : 'max-h-0'
+          }`}>
+            <div className="space-y-2 py-4">
+              {timelineSteps.map((step) => (
+                <Link
+                  key={step.path}
+                  href={step.path}
+                  className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors"
+                >
+                  <span className="text-xl">{step.icon}</span>
+                  <div>
+                    <p className="font-medium text-gray-700">{step.title}</p>
+                    <p className="text-sm text-gray-500">{step.description}</p>
+                  </div>
+                </Link>
               ))}
             </div>
           </div>
@@ -136,44 +187,111 @@ export default function Home() {
       </header>
 
       <main className="container mx-auto px-4 py-8">
-        {/* Hero Section */}
-        <section className="mb-16 p-8 bg-white rounded-3xl shadow-[inset_0_2px_4px_0_rgba(0,0,0,0.1)] text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
-            Développement Web Moderne
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Découvrez le processus complet de création d&apos;une application web moderne, 
-            de l&apos;initialisation au déploiement, en passant par les meilleures pratiques 
-            de développement avec React, Next.js et bien plus encore.
-          </p>
-        </section>
+        {/* Hero Section with CTA */}
+        <div className="grid md:grid-cols-3 gap-8 mb-16">
+          {/* Main Hero - prend 2 colonnes */}
+          <div className="md:col-span-2">
+            <div className="bg-gradient-to-br from-blue-50 via-white to-purple-50 rounded-3xl p-12 shadow-sm h-full">
+              {/* Title */}
+              <h1 className="text-center mb-8">
+                <span className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                  Comprendre le développement web
+                </span>
+              </h1>
+              
+              <p className="text-xl text-gray-700 text-center mb-12">
+                Découvrez les étapes essentielles du développement d&apos;applications web modernes
+              </p>
+
+              {/* Simple Cards Grid */}
+              <div className="grid md:grid-cols-4 gap-6">
+                <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
+                  <h3 className="font-semibold text-blue-800 mb-3">Développement</h3>
+                  <p className="text-gray-600 text-sm">
+                    Comprendre comment choisir les bonnes technologies et comment démarrer votre projet web
+                  </p>
+                </div>
+
+                <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
+                  <h3 className="font-semibold text-purple-800 mb-3">Collaboration</h3>
+                  <p className="text-gray-600 text-sm">
+                    Initiation à Git, comprendre la gestion de versions et le travail en équipe
+                  </p>
+                </div>
+
+                <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
+                  <h3 className="font-semibold text-indigo-800 mb-3">Base de données</h3>
+                  <p className="text-gray-600 text-sm">
+                    Comprendre comment choisir la base de données qui correspond à votre projet
+                  </p>
+                </div>
+
+                <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
+                  <h3 className="font-semibold text-indigo-800 mb-3">Déploiement</h3>
+                  <p className="text-gray-600 text-sm">
+                    Comprendre comment déployer votre application web
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Call to Action */}
+          <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-3xl p-8 shadow-sm flex flex-col justify-center">
+            <h3 className="text-2xl font-bold text-gray-800 mb-4">
+              Prêt à découvrir ?
+            </h3>
+            <p className="text-gray-600 mb-6">
+              Commencez votre parcours avec une introduction au développement web moderne
+            </p>
+            <Link 
+              href="/introduction"
+              className="bg-blue-600 text-white px-6 py-3 rounded-xl font-medium hover:bg-blue-700 transition-colors text-center"
+            >
+              Démarrer le parcours
+            </Link>
+          </div>
+        </div>
 
         {/* Timeline Section */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">
-            Parcours d&apos;apprentissage
+        <section className="mb-16 p-12 bg-gradient-to-br from-gray-50 via-white to-blue-50 rounded-3xl shadow-sm">
+          <h2 className="text-4xl font-bold text-center mb-16">
+            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              Parcours d&apos;apprentissage
+            </span>
           </h2>
-          <div className="flex flex-col md:flex-row flex-wrap justify-between items-start gap-8">
-            {timelineSteps.map((step, index) => (
-              <div key={step.path} className="relative flex-1 min-w-[250px]">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 rounded-full bg-white shadow-[inset_0_2px_4px_0_rgba(0,0,0,0.1)] flex items-center justify-center text-xl font-bold">
-                    {step.number}
-                  </div>
-                  {index < timelineSteps.length - 1 && (
-                    <div className="hidden md:block h-0.5 flex-1 bg-gray-300 ml-4" />
-                  )}
-                </div>
-                <h3 className="text-lg font-semibold mb-2">{step.title}</h3>
-                <p className="text-gray-600 mb-3">{step.description}</p>
-                <a
+
+          <div className="relative px-8 ">
+            {/* Ligne horizontale */}
+            <div className="absolute top-1/2 left-0 w-full h-0.5 bg-blue-100/50"/>
+            
+            {/* Steps */}
+            <div className="flex justify-between relative">
+              {timelineSteps.map((step) => (
+                <Link 
+                  key={step.path}
                   href={step.path}
-                  className="text-blue-600 hover:text-blue-800 transition-colors"
+                  className="flex flex-col items-center w-40 group"
                 >
-                  En savoir plus →
-                </a>
-              </div>
-            ))}
+                  {/* Icône */}
+                  <div className="w-14 h-14 rounded-full bg-white border-2 border-blue-500 
+                                flex items-center justify-center text-2xl z-10 mb-4
+                                group-hover:scale-110 transition-transform">
+                    {step.icon}
+                  </div>
+
+                  {/* Contenu */}
+                  <div className="text-center">
+                    <h3 className="font-semibold text-blue-800 mb-2 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full inline-block">
+                      {step.title}
+                    </h3>
+                    <p className="text-sm text-gray-600 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-lg">
+                      {step.description}
+                    </p>
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
         </section>
 
