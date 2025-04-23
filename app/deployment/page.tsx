@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 
 export default function Deployment() {
   const [isDeploying, setIsDeploying] = useState(false);
+  const [deploymentComplete, setDeploymentComplete] = useState(false);
 
   const deploymentSteps = [
     {
@@ -50,6 +51,117 @@ export default function Deployment() {
             <p className="text-gray-600">
               Mettre votre application en ligne avec Vercel en quelques clics
             </p>
+          </div>
+
+          <div className="mb-12 bg-gradient-to-r from-blue-50 to-purple-50 p-8 rounded-xl">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="bg-blue-600 p-3 rounded-xl">
+                <span className="text-3xl">🚀</span>
+              </div>
+              <div>
+                <h2 className="text-2xl font-bold text-blue-800">
+                  Comprendre le Déploiement et le CI/CD
+                </h2>
+                <p className="text-gray-600 mt-1">
+                  De votre ordinateur jusqu&apos;aux utilisateurs : le voyage de votre code
+                </p>
+              </div>
+            </div>
+            
+            <div className="space-y-6">
+              <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all">
+                <h3 className="flex items-center gap-2 text-lg font-semibold text-blue-800 mb-3">
+                  <span>🏗️</span>
+                  Qu&apos;est-ce que le Déploiement ?
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Le déploiement, c&apos;est le processus qui permet de rendre votre application accessible aux utilisateurs sur Internet.
+                  Imaginez que votre code est comme une boutique : le déploiement, c&apos;est l&apos;installation de cette boutique 
+                  dans un centre commercial (le serveur) pour que les clients puissent y accéder.
+                </p>
+              </div>
+
+              <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all">
+                <h3 className="flex items-center gap-2 text-lg font-semibold text-blue-800 mb-3">
+                  <span>⚡</span>
+                  Le CI/CD expliqué simplement
+                </h3>
+                <div className="space-y-4">
+                  <p className="text-gray-600">
+                    CI/CD (Intégration Continue / Déploiement Continu) est comme une chaîne de montage automatisée :
+                  </p>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="bg-blue-50 p-4 rounded-lg">
+                      <h4 className="font-medium text-blue-700 mb-2">🔄 CI : Intégration Continue</h4>
+                      <p className="text-sm text-gray-600">
+                        Vérifie automatiquement que votre code fonctionne bien :
+                        <ul className="mt-2 space-y-1">
+                          <li className="flex items-center gap-2">
+                            <span className="text-green-500">✓</span>
+                            Tests automatiques
+                          </li>
+                          <li className="flex items-center gap-2">
+                            <span className="text-green-500">✓</span>
+                            Vérification de la qualité
+                          </li>
+                          <li className="flex items-center gap-2">
+                            <span className="text-green-500">✓</span>
+                            Détection des bugs
+                          </li>
+                        </ul>
+                      </p>
+                    </div>
+                    <div className="bg-purple-50 p-4 rounded-lg">
+                      <h4 className="font-medium text-purple-700 mb-2">🚀 CD : Déploiement Continu</h4>
+                      <p className="text-sm text-gray-600">
+                        Déploie automatiquement si tout est OK :
+                        <ul className="mt-2 space-y-1">
+                          <li className="flex items-center gap-2">
+                            <span className="text-green-500">✓</span>
+                            Construction de l&apos;application
+                          </li>
+                          <li className="flex items-center gap-2">
+                            <span className="text-green-500">✓</span>
+                            Déploiement automatique
+                          </li>
+                          <li className="flex items-center gap-2">
+                            <span className="text-green-500">✓</span>
+                            Mise en ligne
+                          </li>
+                        </ul>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all">
+                <h3 className="flex items-center gap-2 text-lg font-semibold text-blue-800 mb-3">
+                  <span>💪</span>
+                  Pourquoi est-ce critique ?
+                </h3>
+                <div className="grid md:grid-cols-3 gap-6">
+                  <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-lg">
+                    <h4 className="font-medium text-blue-700 mb-2">🔄 Rapidité</h4>
+                    <p className="text-sm text-gray-700">
+                      Déploiement automatique en quelques minutes au lieu de plusieurs heures manuellement
+                    </p>
+                  </div>
+                  <div className="bg-gradient-to-br from-green-50 to-green-100 p-4 rounded-lg">
+                    <h4 className="font-medium text-green-700 mb-2">🛡️ Fiabilité</h4>
+                    <p className="text-sm text-gray-700">
+                      Détection automatique des bugs avant qu&apos;ils n&apos;atteignent les utilisateurs
+                    </p>
+                  </div>
+                  <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-4 rounded-lg">
+                    <h4 className="font-medium text-purple-700 mb-2">📈 Productivité</h4>
+                    <p className="text-sm text-gray-700">
+                      Les développeurs peuvent se concentrer sur le code plutôt que sur le déploiement
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Étapes de déploiement */}
@@ -133,8 +245,30 @@ export default function Deployment() {
                       animate={{ width: "100%" }}
                       transition={{ duration: 3 }}
                       className="h-full bg-gradient-to-r from-blue-500 to-purple-500"
+                      onAnimationComplete={() => setDeploymentComplete(true)}
                     />
                   </div>
+                  
+                  {deploymentComplete && (
+                    <motion.div 
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      className="mt-6 space-y-4"
+                    >
+                      <p className="text-green-400">✨ Déploiement réussi !</p>
+                      <div className="bg-green-900/30 p-4 rounded-lg">
+                        <p className="text-green-300 mb-2">
+                          🎉 Félicitations ! Vous avez terminé la formation !
+                        </p>
+                        <Link 
+                          href="/merci" 
+                          className="text-blue-400 hover:text-blue-300 underline"
+                        >
+                          → Votre site est en ligne ! Accédez en cliquant sur ce lien 
+                        </Link>
+                      </div>
+                    </motion.div>
+                  )}
                 </motion.div>
               )}
             </div>

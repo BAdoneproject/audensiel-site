@@ -227,7 +227,8 @@ export default function ReactNextjs() {
 
 
               {/* Principales fonctionnalités */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                {/* Rendu Côté Serveur */}
                 <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-blue-50">
                   <div className="flex items-center gap-3 mb-4">
                     <span className="text-2xl">🚀</span>
@@ -243,8 +244,37 @@ export default function ReactNextjs() {
                     ))}
                   </ul>
                 </div>
-                
-                {/* Répéter le même pattern pour les autres cartes... */}
+
+                {/* Concepts Clés */}
+                <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-blue-50">
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="text-2xl">💡</span>
+                    <h4 className="text-xl font-semibold text-blue-700">Concepts Clés de React</h4>
+                  </div>
+                  <div className="space-y-4">
+                    <div>
+                      <h5 className="font-medium text-blue-600 mb-1">Applications Interactives</h5>
+                      <p className="text-sm text-gray-600">
+                        Parfait pour les tableaux de bord, les applications de gestion, 
+                        où les données changent fréquemment
+                      </p>
+                    </div>
+                    <div>
+                      <h5 className="font-medium text-blue-600 mb-1">Personnalisation</h5>
+                      <p className="text-sm text-gray-600">
+                        Idéal pour les applications avec des thèmes personnalisables, 
+                        des préférences utilisateur
+                      </p>
+                    </div>
+                    <div>
+                      <h5 className="font-medium text-blue-600 mb-1">Gestion de Données</h5>
+                      <p className="text-sm text-gray-600">
+                        Excellent pour les applications de type CRUD, les todo-lists, 
+                        les interfaces d&apos;administration
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               {/* Démonstration CSR vs SSR */}
@@ -562,63 +592,7 @@ export default function ReactNextjs() {
                 </div>
               </div>
 
-              {/* Explication des cas d'usage */}
-              <div className="bg-white p-6 rounded-lg">
-                <h4 className="font-semibold mb-4">Concepts Clés de React en Action</h4>
-                
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-gray-600">
-                  <div>
-                    <h6 className="font-medium text-blue-600">Applications Interactives</h6>
-                    <p>Parfait pour les tableaux de bord, les applications de gestion, 
-                       où les données changent fréquemment</p>
-                  </div>
-                  <div>
-                    <h6 className="font-medium text-blue-600">Personnalisation</h6>
-                    <p>Idéal pour les applications avec des thèmes personnalisables, 
-                       des préférences utilisateur</p>
-                  </div>
-                  <div>
-                    <h6 className="font-medium text-blue-600">Gestion de Données</h6>
-                    <p>Excellent pour les applications de type CRUD, les todo-lists, 
-                       les interfaces d&apos;administration</p>
-                  </div>
-                </div>
-              </div>
 
-              {/* Avantages */}
-              <div className="bg-white p-4 rounded-lg">
-                <h4 className="font-semibold mb-2">Cas d&apos;utilisation concrets</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <h5 className="font-medium text-blue-600">E-commerce</h5>
-                    <p className="text-sm text-gray-600">
-                      Nike.com utilise Next.js pour son catalogue produit : 
-                      chargement rapide, SEO optimal, expérience utilisateur fluide
-                    </p>
-                  </div>
-                  <div>
-                    <h5 className="font-medium text-blue-600">Médias</h5>
-                    <p className="text-sm text-gray-600">
-                      TechCrunch exploite le SSR pour afficher instantanément les actualités 
-                      et optimiser le référencement
-                    </p>
-                  </div>
-                  <div>
-                    <h5 className="font-medium text-blue-600">SaaS</h5>
-                    <p className="text-sm text-gray-600">
-                      Notion tire parti du routage dynamique pour sa documentation 
-                      et ses espaces de travail personnalisés
-                    </p>
-                  </div>
-                  <div>
-                    <h5 className="font-medium text-blue-600">Finance</h5>
-                    <p className="text-sm text-gray-600">
-                      Scale.com utilise Next.js pour ses tableaux de bord temps réel 
-                      et ses interfaces complexes
-                    </p>
-                  </div>
-                </div>
-              </div>
 
               {/* Démo Avancée: Dashboard Analytics */}
               <AnalyticsDashboard />

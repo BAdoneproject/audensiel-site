@@ -401,7 +401,7 @@ db.candidats.findOne({
           ← Retour à Git
         </Link>
         <Link
-          href="/deploiement"
+          href="/deployment"
           className="bg-white px-6 py-3 rounded-lg shadow-sm text-blue-600 hover:text-blue-800 transition-colors"
         >
           Étape suivante : Déploiement →

@@ -108,17 +108,13 @@ export default function GitBranches() {
       title: "👨‍💻 Le rôle du DevOps sur Git",
       description: "Le DevOps est comme le chef d'orchestre entre les développeurs et la production. Sur Git, il :",
       bullets: [
-        "Protège le code comme un gardien : met en place GitLab/GitHub avec des règles de branches protégées",
-        "Automatise les tests : Jenkins/GitLab CI pour vérifier le code avant chaque merge",
-        "Déploie intelligemment : utilise ArgoCD/Flux pour déployer sur Kubernetes",
-        "Sécurise le code : SonarQube pour la qualité, Snyk pour les vulnérabilités",
-        "Industrialise tout le processus : de Git jusqu'à AWS/Azure/GCP en production"
+        "Configure GitLab/GitHub pour sécuriser le code",
+        "Met en place des tests automatiques avec Jenkins/GitLab CI",
+        "Automatise le déploiement vers le cloud"
       ],
       example: "Un développeur push son code → GitLab CI lance les tests → ArgoCD déploie automatiquement"
     }
   };
-
-  
 
   const createBranch = () => {
     if (!newBranchName.trim()) {
@@ -321,6 +317,65 @@ export default function GitBranches() {
 
   return (
     <div className="bg-white rounded-xl p-6 shadow-sm">
+      {/* Nouvelle section d'introduction */}
+      <div className="mb-8 bg-gradient-to-r from-gray-50 to-blue-50 p-6 rounded-xl">
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">
+          Git et les Environnements
+        </h2>
+        
+        {/* Environnements */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <div className="bg-green-50 p-4 rounded-lg">
+            <h3 className="font-medium text-green-700 mb-2">🛠️ Développement</h3>
+            <p className="text-sm text-gray-600">
+              Environnement de test pour les développeurs.
+              Branch: develop
+            </p>
+          </div>
+          <div className="bg-blue-50 p-4 rounded-lg">
+            <h3 className="font-medium text-blue-700 mb-2">🔍 Pré-production</h3>
+            <p className="text-sm text-gray-600">
+              Tests finaux avant mise en production.
+              Branch: staging
+            </p>
+          </div>
+          <div className="bg-purple-50 p-4 rounded-lg">
+            <h3 className="font-medium text-purple-700 mb-2">🚀 Production</h3>
+            <p className="text-sm text-gray-600">
+              Version live pour les utilisateurs.
+              Branch: main
+            </p>
+          </div>
+        </div>
+
+        {/* Branches principales */}
+        <div className="bg-white p-4 rounded-lg">
+          <h3 className="font-medium text-gray-800 mb-3">Branches Git</h3>
+          <div className="space-y-2 text-sm">
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
+              <span className="font-medium">main :</span>
+              <span className="text-gray-600">Code stable en production</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+              <span className="font-medium">develop :</span>
+              <span className="text-gray-600">Développement en cours</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+              <span className="font-medium">feature/* :</span>
+              <span className="text-gray-600">Nouvelles fonctionnalités</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 bg-red-500 rounded-full"></span>
+              <span className="font-medium">hotfix/* :</span>
+              <span className="text-gray-600">Corrections urgentes</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Section DevOps */}
       <div className="mb-8 bg-gradient-to-r from-yellow-50 to-orange-50 p-4 rounded-lg">
         <h2 className="text-lg font-semibold text-gray-800 mb-4">
