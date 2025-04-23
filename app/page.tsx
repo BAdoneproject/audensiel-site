@@ -51,58 +51,7 @@ export default function Home() {
     }
   ];
 
-  const mainFeatures = [
-    {
-      title: "Introduction",
-      description: "Les fondamentaux du développement web moderne",
-      details: [
-        "Vue d'ensemble",
-        "Bonnes pratiques",
-        "Écosystème moderne"
-      ],
-      path: "/introduction"
-    },
-    {
-      title: "React & Next.js",
-      description: "Framework et outils de développement",
-      details: [
-        "Composants réutilisables",
-        "Routage automatique",
-        "Optimisation des performances"
-      ],
-      path: "/react-nextjs"
-    },
-    {
-      title: "Git & Collaboration",
-      description: "Gestion de versions et travail d'équipe",
-      details: [
-        "Branches de développement",
-        "Pull Requests",
-        "Fusion de code"
-      ],
-      path: "/git"
-    },
-    {
-      title: "Base de données",
-      description: "Solutions SQL et NoSQL adaptées",
-      details: [
-        "Structure relationnelle",
-        "Flexibilité NoSQL",
-        "Choix selon les besoins"
-      ],
-      path: "/database"
-    },
-    {
-      title: "Déploiement",
-      description: "De la pré-production à la mise en ligne",
-      details: [
-        "Environnements",
-        "Vercel/Netlify",
-        "Optimisation"
-      ],
-      path: "/deployment"
-    }
-  ];
+
 
   return (
     <div className="min-h-screen bg-gray-100">
