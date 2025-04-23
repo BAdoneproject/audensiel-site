@@ -144,7 +144,7 @@ export default function Home() {
               {/* Title */}
               <h1 className="text-center mb-8">
                 <span className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  Comprendre le développement web
+                  Comprendre le développement web aujourd&apos;hui
                 </span>
               </h1>
               
