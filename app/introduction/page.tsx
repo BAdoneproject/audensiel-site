@@ -1,118 +1,189 @@
 'use client';
-import { useState } from 'react';
-import { motion } from 'framer-motion';
+
 import Link from 'next/link';
 
-interface Step {
-  title: string;
-  description: string;
-  icon: string;
-  color: string;
-  tools: string[];
-}
-
 export default function Introduction() {
-  const [selectedStep, setSelectedStep] = useState<number | null>(null);
-
-  const steps: Step[] = [
+  const roles = [
     {
-      title: "Création du Projet",
-      description: "On commence par créer la structure de base du projet avec les bons outils. C'est comme préparer son atelier avant de commencer à bricoler !",
-      icon: "🏗️",
-      color: "from-blue-50 to-green-50",
-      tools: ["VS Code", "Node.js", "npm", "Next.js", "TypeScript"]
+      title: "Product Owner / Chef de Projet",
+      phase: "Conception & Gestion",
+      description: "Définit les besoins, priorise les fonctionnalités et assure la liaison entre les équipes techniques et métier",
+      skills: ["Gestion de projet", "Agilité", "Vision produit", "Communication"],
+      techStack: {
+        title: "Outils de gestion",
+        items: [
+          "Jira - Suivi de projet",
+          "Confluence - Documentation"
+        ]
+      },
+      icon: "👔"
     },
     {
-      title: "Gestion du Code Source",
-      description: "On utilise Git pour sauvegarder notre travail et collaborer avec l'équipe. Comme un carnet qui garde l'historique de toutes nos modifications.",
-      icon: "🌳",
-      color: "from-green-50 to-teal-50",
-      tools: ["Git", "GitHub", "GitLab", "Branches", "Commits"]
+      title: "UX/UI Designer",
+      phase: "Design & Expérience",
+      description: "Conçoit l'interface et l'expérience utilisateur pour rendre l'application intuitive et agréable",
+      skills: ["Figma/Adobe XD", "Prototypage", "Design System", "Tests utilisateurs"],
+      techStack: {
+        title: "Outils de design",
+        items: [
+          "Sketch - Design d'interface",
+          "Adobe Creative Suite - Création graphique"
+        ]
+      },
+      icon: "🎨"
     },
     {
-      title: "Base de Données",
-      description: "On choisit comment stocker nos données de manière organisée et sécurisée. C'est le coffre-fort de notre application !",
-      icon: "💾",
-      color: "from-purple-50 to-pink-50",
-      tools: ["PostgreSQL", "MongoDB", "MySQL", "Redis"]
+      title: "Développeur Frontend",
+      phase: "Développement",
+      description: "Crée l'interface utilisateur interactive et s'assure de la qualité du code côté client",
+      skills: ["HTML/CSS", "JavaScript", "React", "Tests unitaires"],
+      techStack: {
+        title: "Autres frameworks populaires",
+        items: [
+          "Angular - Alternative robuste",
+          "Vue.js - Alternative légère"
+        ]
+      },
+      icon: "💻"
     },
     {
-      title: "Déploiement",
-      description: "On met notre application en ligne pour que tout le monde puisse y accéder. Comme ouvrir un nouveau magasin !",
-      icon: "🚀",
-      color: "from-orange-50 to-red-50",
-      tools: ["AWS", "Vercel", "Docker", "Kubernetes"]
+      title: "Développeur Backend",
+      phase: "Développement",
+      description: "Développe les APIs et la logique métier, gère les bases de données et la sécurité",
+      skills: ["Node.js", "APIs REST", "SQL/NoSQL", "Sécurité"],
+      techStack: {
+        title: "Autres langages courants",
+        items: [
+          "Java - Applications d'entreprise",
+          "Python - Data et IA"
+        ]
+      },
+      icon: "⚙️"
+    },
+    {
+      title: "DevOps Engineer",
+      phase: "Infrastructure & Déploiement",
+      description: "Met en place l'infrastructure, automatise les déploiements et assure la disponibilité des applications",
+      skills: ["CI/CD", "Cloud", "Monitoring", "Sécurité"],
+      techStack: {
+        title: "Technologies DevOps",
+        items: [
+          "Git - Gestion de versions",
+          "Docker - Conteneurisation",
+        ]
+      },
+      icon: "🚀"
+    },
+    {
+      title: "QA Engineer",
+      phase: "Qualité & Tests",
+      description: "Assure la qualité du produit à travers des tests automatisés et manuels",
+      skills: ["Tests E2E", "Tests de charge", "Automatisation", "Reporting"],
+      techStack: {
+        title: "Outils de test",
+        items: [
+          "Selenium - Tests automatisés",
+          "Postman - Tests d'API"
+        ]
+      },
+      icon: "🎯"
     }
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <main className="max-w-6xl mx-auto p-6 flex flex-col items-center justify-center min-h-[calc(100vh-4rem)]">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-800 mb-4">
-            Parcours de développement web
+    <div className="min-h-screen bg-gray-100">
+      <main className="container mx-auto px-4 py-8">
+        {/* Hero Section */}
+        <section className="mb-16 p-8 bg-gradient-to-br from-blue-50 via-white to-purple-50 rounded-3xl shadow-sm">
+          <h1 className="text-4xl font-bold text-center mb-8">
+            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              Introduction au Développement Web
+            </span>
           </h1>
-          <p className="text-xl text-gray-600">
-            Découvrez étape par étape comment construire et déployer une application moderne
+          
+          <p className="text-xl text-gray-700 text-center mb-8 max-w-3xl mx-auto">
+            Le développement web moderne est un travail d&apos;équipe qui réunit différents experts, 
+            chacun apportant ses compétences spécifiques à chaque étape du projet.
           </p>
-        </div>
+        </section>
 
-        <div className="grid md:grid-cols-2 gap-6 mb-12">
-          {steps.map((step, index) => (
-            <motion.div
-              key={index}
-              className={`bg-gradient-to-r ${step.color} p-6 rounded-xl cursor-pointer transition-all hover:shadow-lg ${
-                selectedStep === index ? 'ring-2 ring-blue-500' : ''
-              }`}
-              onClick={() => setSelectedStep(selectedStep === index ? null : index)}
-              whileHover={{ scale: 1.02 }}
-            >
-              <div className="flex items-start gap-4">
-                <span className="text-4xl">{step.icon}</span>
-                <div>
-                  <h2 className="text-xl font-semibold text-gray-800 mb-2">
-                    {step.title}
-                  </h2>
-                  <p className="text-gray-600 mb-4">
-                    {step.description}
-                  </p>
-                  
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ 
-                      height: selectedStep === index ? 'auto' : 0,
-                      opacity: selectedStep === index ? 1 : 0
-                    }}
-                    className="overflow-hidden"
-                  >
-                    <div className="pt-4 border-t border-gray-200">
-                      <h3 className="font-medium text-gray-700 mb-2">
-                        Outils et Technologies :
-                      </h3>
-                      <div className="flex flex-wrap gap-2">
-                        {step.tools.map(tool => (
-                          <span
-                            key={tool}
-                            className="px-3 py-1 bg-white rounded-full text-sm text-gray-700"
-                          >
-                            {tool}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </motion.div>
+        {/* Roles Section */}
+        <section className="mb-16">
+          <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">
+            Les Métiers du Développement Web
+          </h2>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {roles.map((role) => (
+              <div 
+                key={role.title} 
+                className={`bg-white p-6 rounded-xl shadow-sm transition-all duration-300
+                            ${(role.title === "Développeur Frontend" || role.title === "DevOps Engineer")
+                              ? "border-2 border-gradient-to-r from-blue-500 to-purple-500 relative before:absolute before:inset-0 before:border-2 before:border-transparent before:rounded-xl before:bg-gradient-to-r before:from-blue-500 before:to-purple-500 before:-z-10 hover:shadow-blue-100"
+                              : "hover:shadow-md"
+                            }`}
+              >
+                {/* Badge pour les rôles mis en évidence */}
+                {(role.title === "Développeur Frontend" || role.title === "DevOps Engineer") && (
+                  <div className="absolute -top-3 right-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-xs px-3 py-1 rounded-full">
+                    Focus du workshop
+                  </div>
+                )}
+
+                <div className="flex items-center gap-4 mb-4">
+                  <span className="text-3xl">{role.icon}</span>
+                  <div>
+                    <h3 className="font-bold text-gray-800">{role.title}</h3>
+                    <p className="text-sm text-blue-600">{role.phase}</p>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+                
+                <p className="text-gray-600 mb-4">
+                  {role.description}
+                </p>
 
-        <div className="text-center">
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {role.skills.map((skill) => (
+                    <span 
+                      key={skill} 
+                      className="text-sm bg-gray-100 text-gray-700 px-3 py-1 rounded-full
+                                 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 
+                                 hover:text-white transform hover:-translate-y-0.5 
+                                 cursor-pointer transition-all duration-300 ease-out"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+
+                {role.techStack && (
+                  <div className="mt-4 p-4 bg-gray-50 rounded-lg">
+                    <h4 className="font-medium text-gray-700 mb-2">
+                      {role.techStack.title}
+                    </h4>
+                    <ul className="space-y-1 text-sm text-gray-600">
+                      {role.techStack.items.map((item) => (
+                        <li key={item} className="flex items-center gap-2">
+                          <span className="w-2 h-2 bg-blue-400 rounded-full"/>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Navigation */}
+        <div className="flex justify-end">
           <Link
             href="/react-nextjs"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+            className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-xl 
+                     hover:opacity-90 transition-opacity inline-flex items-center gap-2"
           >
-            <span>Choisir un Framework</span>
+            Suivant : React & Next.js
             <span>→</span>
           </Link>
         </div>

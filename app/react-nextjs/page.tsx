@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { useState} from 'react';
 import AnalyticsDashboard from '../components/AnalyticsDashboard';
+import { FaReact, FaVuejs, FaAngular } from 'react-icons/fa';
 
 export default function ReactNextjs() {
   const [showNextJs, setShowNextJs] = useState(false);
@@ -91,62 +92,85 @@ export default function ReactNextjs() {
     <div className="min-h-screen bg-gray-100">
       <main className="container mx-auto px-4 py-8">
         <section className="mb-16 p-8 bg-white rounded-3xl shadow-[inset_0_2px_4px_0_rgba(0,0,0,0.1)]">
-          <h1 className="text-4xl font-bold text-gray-800 mb-6">
-            Choisir un Framework
+          <h1 className="text-4xl font-bold text-center mb-8">
+            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              Choisir un Framework
+            </span>
           </h1>
 
+          {/* Introduction simple */}
+          <div className="bg-gray-50 p-6 rounded-xl mb-12">
+            <h2 className="text-xl font-semibold text-gray-800 mb-4">
+              Pourquoi bien choisir son framework est important ?
+            </h2>
+            <p className="text-gray-600 leading-relaxed">
+              Le choix du framework impacte directement la productivité de l&apos;équipe, la maintenabilité du code 
+              et les performances de l&apos;application. C&apos;est un choix stratégique qui doit prendre en compte 
+              la taille du projet, l&apos;expertise de l&apos;équipe et les besoins spécifiques de l&apos;application.
+            </p>
+          </div>
+
+          {/* Cards enrichies */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             {/* Vue.js Card */}
             <div className="bg-gradient-to-br from-green-50 to-white rounded-2xl p-8 shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl border border-green-100">
               <div className="flex items-center gap-3 mb-6">
-                <span className="text-3xl">🟢</span>
-                <h2 className="text-2xl font-bold text-green-600">Vue.js</h2>
+                <FaVuejs size="2em" color="#059669" />
+                <div>
+                  <h2 className="text-2xl font-bold text-green-600">Vue.js</h2>
+                  <p className="text-sm text-gray-500">Créé par Evan You en 2014</p>
+                </div>
               </div>
               <p className="text-gray-600 mb-6 leading-relaxed">
-                Comme un couteau suisse : simple à utiliser mais polyvalent.
-                Parfait pour ceux qui débutent dans le développement web.
+                Si Vue.js était un moyen de transport, ce serait un vélo électrique : 
+                facile à prendre en main, adaptable à différents terrains, et efficace 
+                sans être complexe.
               </p>
               <ul className="space-y-3 text-gray-600">
                 <li className="flex items-center gap-2">
                   <span className="text-green-500">✓</span>
-                  <span>Comme Lego® : facile à assembler</span>
+                  <span>Documentation claire et accessible</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="text-green-500">✓</span>
-                  <span>Documentation claire comme de l&apos;eau de roche</span>
+                  <span>Courbe d&apos;apprentissage douce</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="text-green-500">✓</span>
-                  <span>Idéal pour les petits projets</span>
+                  <span>Évolution progressive possible</span>
                 </li>
               </ul>
             </div>
 
-            {/* React Card */}
+            {/* React Card avec focus */}
             <div 
               onClick={() => setShowNextJs(!showNextJs)}
               className="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-8 shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl border-2 border-blue-500 cursor-pointer"
             >
               <div className="flex items-center gap-3 mb-6">
-                <span className="text-3xl">🔵</span>
-                <h2 className="text-2xl font-bold text-blue-600">React</h2>
+                <FaReact size="2em" color="#2563eb" className="animate-spin-slow" />
+                <div>
+                  <h2 className="text-2xl font-bold text-blue-600">React</h2>
+                  <p className="text-sm text-gray-500">Créé par Facebook en 2013</p>
+                </div>
               </div>
               <p className="text-gray-600 mb-6 leading-relaxed">
-                Comme un moteur de F1 : puissant et optimisé.
-                Le choix des professionnels pour les projets ambitieux.
+                Si React était un moyen de transport, ce serait une voiture moderne : 
+                polyvalente, personnalisable et dotée d&apos;un vaste écosystème de pièces 
+                et d&apos;accessoires.
               </p>
               <ul className="space-y-3 text-gray-600">
                 <li className="flex items-center gap-2">
                   <span className="text-blue-500">✓</span>
-                  <span>Comme YouTube : une immense communauté</span>
+                  <span>Grande flexibilité architecturale</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="text-blue-500">✓</span>
-                  <span>Comme un smartphone : des milliers d&apos;extensions</span>
+                  <span>Composants réutilisables</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="text-blue-500">✓</span>
-                  <span>Le plus populaire du marché</span>
+                  <span>Communauté très active</span>
                 </li>
               </ul>
             </div>
@@ -154,25 +178,29 @@ export default function ReactNextjs() {
             {/* Angular Card */}
             <div className="bg-gradient-to-br from-red-50 to-white rounded-2xl p-8 shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl border border-red-100">
               <div className="flex items-center gap-3 mb-6">
-                <span className="text-3xl">🔴</span>
-                <h2 className="text-2xl font-bold text-red-600">Angular</h2>
+                <FaAngular size="2em" color="#dc2626" />
+                <div>
+                  <h2 className="text-2xl font-bold text-red-600">Angular</h2>
+                  <p className="text-sm text-gray-500">Créé par Google en 2010</p>
+                </div>
               </div>
               <p className="text-gray-600 mb-6 leading-relaxed">
-                Comme une usine : complet et structuré.
-                Le choix des grandes entreprises qui veulent tout contrôler.
+                Si Angular était un moyen de transport, ce serait un train à grande vitesse : 
+                structuré, robuste et conçu pour les grands trajets avec une organisation 
+                bien définie.
               </p>
               <ul className="space-y-3 text-gray-600">
                 <li className="flex items-center gap-2">
                   <span className="text-red-500">✓</span>
-                  <span>Comme une voiture neuve : tout est inclus</span>
+                  <span>Outils intégrés complets</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="text-red-500">✓</span>
-                  <span>Structure rigide mais efficace</span>
+                  <span>Standards de développement stricts</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="text-red-500">✓</span>
-                  <span>Sécurité renforcée avec TypeScript</span>
+                  <span>Idéal pour les grandes équipes</span>
                 </li>
               </ul>
             </div>
